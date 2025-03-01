@@ -1,4 +1,4 @@
-* {
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -15,11 +15,13 @@ header {
     background: linear-gradient(135deg, #ff4081, #ff6f61);
     padding: 40px 0;
     text-align: center;
+    animation: fadeIn 1s ease-in;
 }
 
 h1 {
     font-size: 3em;
     margin-bottom: 10px;
+    animation: bounce 1s infinite alternate;
 }
 
 h2 {
@@ -40,6 +42,9 @@ section {
     background-color: #2a2a2a;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.5s forwards;
 }
 
 ul {
@@ -54,12 +59,14 @@ li {
 a {
     color: #ff4081;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
 }
 
 a:hover {
     color: #ff6f61;
     text-decoration: underline;
+    transform: scale(1.05);
+    text-shadow: 0 0 5px #ff4081, 0 0 10px #ff4081;
 }
 
 footer {
@@ -72,4 +79,42 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+}
+
+.slide-in {
+    animation: slideIn 0.5s forwards;
 }
