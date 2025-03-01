@@ -236,4 +236,9 @@ footer p {
   .release-details h3 {
     font-size: 1.5em;
   }
+  .release-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
