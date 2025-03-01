@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, #d940ff, #5040ff);
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+  height: 150px; /* Adjust the header height as needed */
+  animation: fadeIn 1s ease-in;
+}
+
+/* Profile Image on top left */
+.profile-image {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #ffffff;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Center header content vertically and horizontally */
+header .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+h1 {
+  color: #000000;
+  font-size: 3em;
+  margin-bottom: 10px;
+  animation: bounce 1s infinite alternate;
+}
+
+h2 {
+  color: #d940ff;
+  margin: 20px 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  margin: 60px 0;
+  padding: 20px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 0.5s forwards;
+}
+
+/* New Release Section */
+.release {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.release-cover img {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.release-details h3 {
+  margin-bottom: 10px;
+  font-size: 1.8em;
+}
+
+.release-details p {
+  margin-bottom: 10px;
+}
+
+/* Button styling for link button */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d940ff;
+  color: #000000;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #ff6f61;
+}
+
+/* Spacing between music embeds */
+.music-embed {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+a {
+  color: #ff4081;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+
+a:hover {
+  color: #ff6f61;
+  text-decoration: underline;
+  transform: scale(1.05);
+  text-shadow: 0 0 5px #ff4081, 0 0 10px #ff4081;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #2a2a2a;
+  border-top: 1px solid #444;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.slide-in {
+  animation: slideIn 0.5s forwards;
+}
