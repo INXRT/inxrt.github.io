@@ -20,9 +20,7 @@ header {
   animation: fadeIn 1s ease-in;
 }
 
-/* Profile Image on top left */
-
-/* Center header content vertically and horizontally */
+/* Header container styling */
 header .container {
   display: flex;
   flex-direction: column;
@@ -50,8 +48,44 @@ h2 {
   padding: 20px;
 }
 
+/* Separate container for the page navigator */
+.page-nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.page-nav {
+  background: linear-gradient(135deg, #ff6f61, #ff4081);
+  padding: 10px 0;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.page-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.1em;
+  transition: color 0.3s;
+}
+
+.page-nav a:hover {
+  color: #ffeb3b;
+}
+
 section {
-  margin: 60px 0;
+  margin: 60px auto;
   padding: 20px;
   background-color: #2a2a2a;
   border-radius: 8px;
@@ -61,7 +95,6 @@ section {
   animation: slideIn 0.5s forwards;
 }
 
-/* New Release Section */
 .release {
   display: flex;
   align-items: center;
@@ -84,7 +117,6 @@ section {
   margin-bottom: 10px;
 }
 
-/* Button styling for link button */
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -99,7 +131,6 @@ section {
   background-color: #d940ff;
 }
 
-/* Spacing between music embeds */
 .music-embed {
   margin-top: 20px;
 }
