@@ -129,7 +129,7 @@ body {
 header {
   width: 100%;
   min-height: 30vh; /* Reduced height to wrap just a bit larger than content */
-  background: linear-gradient(135deg, #1f1c2c, #000000);
+  background: linear-gradient(135deg, #d940ff, #5040ff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,7 +161,7 @@ header {
 .sub-header {
   width: 100%;
   min-height: 40vh;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  background: linear-gradient(135deg, #d940ff, #5040ff);
   display: flex;
   align-items: center;
   justify-content: center;
