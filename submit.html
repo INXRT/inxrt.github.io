@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Your Demos - INXRT</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Google API for Picker -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <!-- Dropbox Chooser -->
+  <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="YOUR_DROPBOX_APP_KEY"></script>
+  <!-- OneDrive Picker -->
+  <script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">INXRT</a>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#music">Music</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="submit.html">Submit Your Demos</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sub-header for Submit Your Demos Page -->
+  <header class="sub-header">
+    <div class="header-content">
+      <h1>Submit Your Demos</h1>
+      <p>Upload your music demo to get featured</p>
+    </div>
+  </header>
+
+  <!-- Demo Submission Form Section -->
+  <section id="submit-demos">
+    <h2 class="section-title">Upload Your Demo</h2>
+    <div class="section-content">
+      <form action="#" method="post" enctype="multipart/form-data" class="demo-form">
+        <label for="song-name">Song Name</label>
+        <input type="text" id="song-name" name="song-name" placeholder="Enter song name" required />
+
+        <label for="artist-name">Artist Name</label>
+        <input type="text" id="artist-name" name="artist-name" placeholder="Enter artist name" required />
+
+        <p>Select your upload source:</p>
+        <div class="upload-options">
+          <button type="button" class="btn upload-btn" onclick="uploadFrom('google-drive')">Google Drive</button>
+          <button type="button" class="btn upload-btn" onclick="uploadFrom('onedrive')">OneDrive</button>
+          <button type="button" class="btn upload-btn" onclick="uploadFrom('dropbox')">Dropbox</button>
+        </div>
+
+        <!-- Hidden file input (optional fallback) -->
+        <input type="file" id="demo-file" name="demo-file" style="display:none;" accept="audio/*" />
+
+        <button type="submit" class="btn submit-demo">Submit Demo</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 INXRT. All rights reserved.</p>
+  </footer>
+
+  <!-- Integration Scripts -->
+  <script>
+    /* ---------------------------
+       Google Drive Picker Setup
+       ---------------------------
+       Note: You must enable the Google Picker API and obtain your API key and client ID.
+    */
+    var developerKey = "YOUR_GOOGLE_API_KEY";
+    var clientId = "YOUR_GOOGLE_CLIENT_ID";
+    var scope = ['https://www.googleapis.com/auth/drive.readonly'];
+    var oauthToken;
+
+    function onApiLoad() {
+      gapi.load('auth', {callback: onAuthApiLoad});
+      gapi.load('picker', {callback: onPickerApiLoad});
+    }
+
+    function onAuthApiLoad() {
+      window.gapi.auth.authorize(
+        {
+          client_id: clientId,
+          scope: scope,
+          immediate: false
+        },
+        handleAuthResult
+      );
+    }
+
+    function onPickerApiLoad() {
+      // Picker API loaded.
+    }
+
+    function handleAuthResult(authResult) {
+      if (authResult && !authResult.error) {
+        oauthToken = authResult.access_token;
+        createPicker();
+      }
+    }
+
+    function createPicker() {
+      if (oauthToken) {
+        var picker = new google.picker.PickerBuilder()
+          .addView(google.picker.ViewId.DOCS)
+          .setOAuthToken(oauthToken)
+          .setDeveloperKey(developerKey)
+          .setCallback(googlePickerCallback)
+          .build();
+        picker.setVisible(true);
+      }
+    }
+
+    function googlePickerCallback(data) {
+      if (data.action === google.picker.Action.PICKED) {
+        var fileId = data.docs[0].id;
+        console.log("Google Drive: Picked file ID:", fileId);
+        // You can now handle the file ID further (e.g., store it in your backend)
+      }
+    }
+
+    function launchGoogleDrivePicker() {
+      onApiLoad();
+    }
+
+    /* ---------------------------
+       OneDrive Picker Setup
+       ---------------------------
+       Note: You must register your app with OneDrive and use your actual app ID.
+    */
+    function launchOneDrivePicker() {
+      var odOptions = {
+        clientId: "YOUR_ONEDRIVE_APP_ID",
+        action: "share", // or "download" depending on your needs
+        multiSelect: false,
+        advanced: {},
+        success: function(files) { 
+          console.log("OneDrive: ", files);
+          // Handle the returned file information as needed
+        },
+        cancel: function() { 
+          console.log("OneDrive Picker canceled.");
+        },
+        error: function(e) { 
+          console.error("OneDrive Error: ", e);
+        }
+      };
+      OneDrive.open(odOptions);
+    }
+
+    /* ---------------------------
+       Dropbox Chooser Setup
+       ---------------------------
+       Note: Replace YOUR_DROPBOX_APP_KEY with your actual Dropbox app key.
+    */
+    function launchDropboxChooser() {
+      Dropbox.choose({
+        success: function(files) {
+          console.log("Dropbox: ", files);
+          // Process the selected file(s) as needed
+        },
+        cancel: function() { 
+          console.log("Dropbox Chooser canceled.");
+        },
+        linkType: "preview", // "direct" for direct link
+        multiselect: false,
+        extensions: ['.mp3', '.wav']
+      });
+    }
+
+    /* ---------------------------
+       Dispatch Function
+       ---------------------------
+       Calls the correct file picker based on the source selected.
+    */
+    function uploadFrom(source) {
+      if (source === 'google-drive') {
+        launchGoogleDrivePicker();
+      } else if (source === 'onedrive') {
+        launchOneDrivePicker();
+      } else if (source === 'dropbox') {
+        launchDropboxChooser();
+      } else {
+        alert("Unknown source: " + source);
+      }
+    }
+  </script>
+</body>
+</html>
