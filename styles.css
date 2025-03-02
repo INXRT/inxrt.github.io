@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #252526;
+  background: #252526; /* updated from #0d0d0d */
   color: #ffffff;
   line-height: 1.6;
 }
@@ -21,7 +21,7 @@ body {
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgba(37, 37, 38, 0.5);
+  background: rgba(37, 37, 38, 0.5); /* updated from rgba(0, 0, 0, 0.5) */
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@ body {
   color: #ff4081;
 }
 
-/* Mobile Menu */
+/* Mobile Menu (Hidden by Default) */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -83,7 +83,7 @@ body {
   transition: 0.3s;
 }
 
-/* Mobile Menu Dropdown */
+/* Mobile Menu Dropdown with Dark Glassmorphism and Increased Opacity */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
@@ -94,12 +94,13 @@ body {
     top: 60px;
     left: 10px;
     right: 10px;
-    background: rgba(37, 37, 38, 0.9);
+    background: rgba(37, 37, 38, 0.9); /* updated from rgba(0, 0, 0, 0.9) */
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(30px);
-    box-shadow: 0 4px 10px rgba(37, 37, 38, 0.2);
+    box-shadow: 0 4px 10px rgba(37, 37, 38, 0.2); /* updated from rgba(0, 0, 0, 0.2) */
     border-radius: 10px;
     flex-direction: column;
+    gap: 0;
     text-align: center;
     opacity: 0;
     visibility: hidden;
@@ -127,19 +128,19 @@ body {
 /* Header / Hero Section */
 header {
   width: 100%;
-  min-height: 30vh;
+  min-height: 30vh; /* Reduced height to wrap just a bit larger than content */
   background: linear-gradient(135deg, #d940ff, #5040ff);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
-  margin-top: 60px;
+  padding: 60px 20px; /* Provides extra space around content */
+  margin-top: 60px; /* To avoid nav overlap */
   text-align: center;
 }
 
 .header-content {
   text-align: center;
-  background: rgba(37, 37, 38, 0.4);
+  background: rgba(37, 37, 38, 0.4); /* updated from rgba(0, 0, 0, 0.4) */
   backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 10px;
@@ -156,7 +157,7 @@ header {
   font-size: 1.5rem;
 }
 
-/* Sub-header (for pages like releases and submit) */
+/* Sub-header for Releases Page */
 .sub-header {
   width: 100%;
   min-height: 40vh;
@@ -173,6 +174,7 @@ header {
 }
 
 /* Section Box Styling */
+/* Each section is wrapped in its own box with a subtle border and shadow */
 section {
   padding: 40px 20px;
   margin: 60px auto;
@@ -185,13 +187,14 @@ section {
 }
 
 /* Section Title Separator */
+/* Adds a small accent separator below the title */
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #ffffff;
-  padding-bottom: 10px;
   position: relative;
+  padding-bottom: 10px;
 }
 .section-title::after {
   content: "";
@@ -212,7 +215,7 @@ section {
   line-height: 1.8;
 }
 
-/* Social Links (if any) */
+/* Social Links Styling */
 .social-links {
   list-style: none;
   display: flex;
@@ -236,11 +239,11 @@ section {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Releases (for release cards) */
+/* Releases */
 .release {
-  background: rgba(37, 37, 38, 0.7);
+  background: rgba(37, 37, 38, 0.7); /* Darker background */
   backdrop-filter: blur(15px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Added border */
   border-radius: 10px;
   padding: 20px;
   margin: 40px auto;
@@ -278,7 +281,6 @@ section {
   flex-wrap: wrap;
 }
 
-/* Button Styling */
 .btn {
   padding: 10px 15px;
   background: rgba(255, 255, 255, 0.2);
@@ -289,80 +291,17 @@ section {
   text-decoration: none;
   font-size: 1rem;
   transition: background 0.3s;
-  cursor: pointer;
 }
 
 .btn:hover {
   background: rgba(255, 255, 255, 0.4);
 }
 
-/* Specific Button Classes */
-.upload-btn {
-  background: #ff4081;
-}
-.upload-btn:hover {
-  background: #ff1053;
-}
-
-.submit-demo {
-  background: #4CAF50;
-  margin-top: 15px;
-}
-.submit-demo:hover {
-  background: #3e8e41;
-}
-
-/* Music Upload Form Styles */
-.upload-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.demo-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.demo-form label {
-  margin-top: 15px;
-  font-size: 1.1rem;
-}
-
-.demo-form input[type="text"],
-.demo-form input[type="file"] {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  margin-top: 5px;
-}
-
-/* Upload Options */
-.upload-options {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-}
-
-/* Cover Art Preview */
-#cover-preview {
-  width: 120px;
-  height: 120px;
-  background: #ccc;
-  border-radius: 10px;
-  margin-top: 10px;
-  background-size: cover;
-  background-position: center;
-}
-
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
-  background: rgba(37,37,38,0.7);
+  background: rgba(37, 37, 38, 0.7); /* updated from rgba(0, 0, 0, 0.7) */
   color: #aaaaaa;
   margin-top: 60px;
 }
